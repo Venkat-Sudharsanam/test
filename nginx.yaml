@@ -1,21 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+  name: try-nginx
+  namespace: argocd
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: image
+        value: nginx:1.14.2
+      - name: port
+        value: 80
+      releaseName: try-nginx
+    path: nginxhelm
+    repoURL: https://github.com/Venkat-Sudharsanam/test.git
