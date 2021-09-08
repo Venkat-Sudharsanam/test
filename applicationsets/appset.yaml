@@ -14,7 +14,7 @@ spec:
       - cluster: server2
         url: https://A28F2B73B4094DA3943AA394EE4884F5.gr7.us-west-2.eks.amazonaws.com
         image: nginx:1.21.1
-        port: 8080
+        port: 80
   template:
     metadata:
       name: '{{cluster}}-nginx'
