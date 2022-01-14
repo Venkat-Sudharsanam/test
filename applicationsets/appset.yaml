@@ -11,7 +11,7 @@ spec:
         url: https://kubernetes.default.svc
         image: nginx:1.14.2
       - cluster: server2
-        url: https://A28F2B73B4094DA3943AA394EE4884F5.gr7.us-west-2.eks.amazonaws.com
+        url: https://argotestaks-dns-885ac337.hcp.eastus.azmk8s.io:443
   template:
     metadata:
       name: '{{cluster}}-nginx'
